@@ -6,8 +6,11 @@
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
+<c:import url="../temp/bootStrap.jsp"></c:import>
+
 </head>
 <body>
+	<c:import url="../temp/header.jsp"></c:import>
 	<h1>Detail Page</h1>
 
 
@@ -24,8 +27,8 @@
 		</c:otherwise>
 	</c:choose>
 
-	<a href="./update.do?bookNum=${dto.bookNum}">수정</a><br>
-	<a href="./delete.do?bookNum=${dto.bookNum}">삭제</a>
+	<a href="./update?bookNum=${dto.bookNum}" class="btn btn-warning">수정</a>
+	<a href="./delete?bookNum=${dto.bookNum}" class="btn btn-warning">삭제</a>
 
 	<%-- 	<c:if test="${dto.bookSale eq 1 }">
 		<h1>판매중</h1>

@@ -5,8 +5,11 @@
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
+<c:import url="../temp/bootStrap.jsp"></c:import>
+
 </head>
 <body>
+	<c:import url="../temp/header.jsp"></c:import>
 	<h1>Update Page</h1>
 
 	<form action="./update.do" method="post">

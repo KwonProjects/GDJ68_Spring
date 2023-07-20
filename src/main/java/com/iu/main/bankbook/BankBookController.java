@@ -18,14 +18,16 @@ public class BankBookController {
 
 		
 		System.out.println("list");
-		bankBookService.service();
+		
 		return "bankbook/list";
 
 	}
 	
 	@RequestMapping(value = "detail",method = RequestMethod.GET)
-	public String getDetail()throws Exception{
+	public String getDetail(BankBookDTO bankBookDTO)throws Exception{
+		bankBookDTO = bankBookService.getDetail(bankBookDTO);
 		System.out.println("detail");
+		
 		
 		
 		return "bankbook/detail";

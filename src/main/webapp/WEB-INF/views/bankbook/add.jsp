@@ -1,78 +1,53 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-	rel="stylesheet">
+<c:import url="../temp/bootStrap.jsp"></c:import>
+
 </head>
 <body>
-	<header>
-		<nav
-			class="navbar navbar navbar-expand-lg bg-dark border-bottom border-bottom-dark"
-			data-bs-theme="dark">
-			<div class="container-fluid">
-				<a class="navbar-brand" href="#">Navbar</a>
-				<button class="navbar-toggler" type="button"
-					data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-					aria-controls="navbarSupportedContent" aria-expanded="false"
-					aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-						<li class="nav-item"><a class="nav-link active"
-							aria-current="page" href="/index.do">Home</a></li>
-						<li class="nav-item"><a class="nav-link active"
-							href="/bankbook/list.do">±İÀ¶»óÇ°</a></li>
-						<li class="nav-item dropdown"><a
-							class="nav-link active dropdown-toggle" href="#" role="button"
-							data-bs-toggle="dropdown" aria-expanded="false"> Dropdown </a>
-							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="#">Action</a></li>
-								<li><a class="dropdown-item" href="#">Another action</a></li>
-								<li><hr class="dropdown-divider"></li>
-								<li><a class="dropdown-item" href="#">Something else
-										here</a></li>
-							</ul></li>
-						<li class="nav-item"><a class="nav-link disabled">Disabled</a>
-						</li>
-					</ul>
-					<form class="d-flex" role="search">
-						<input class="form-control me-2" type="search"
-							placeholder="Search" aria-label="Search">
-						<button class="btn btn-outline-success" type="submit">Search</button>
-					</form>
-				</div>
-		</nav>
-	</header>
-	<h1>Add Page</h1>
-	<form action="./add.do" method="post">
-	<div></div>
-		»óÇ°¸í<input type="text" name="bookName"><br> »ó¼¼¼³¸í
-		<textarea rows="" cols="" name="bookContents"></textarea>
-		<br> ÀÌÀÚÀ²<input type="text" name="bookRate"><br>
+	<c:import url="../temp/header.jsp"></c:import>
 
-		<p>
-			ÆÇ¸Å°¡´É <input type="radio" name="bookSale" value="1" checked="checked"><br>
-			ÆÇ¸ÅÁßÁö <input type="radio" name="bookSale" value="0"><br>
-		</p>
-		<p>
-			<!-- 			<select name="boo">
-				<option>ÆÇ¸Å°¡´É</option>
-				<option selected>ÆÇ¸ÅÁßÁö</option>
+	<section class="container mt-5">
+		<h1>Add PAGE</h1>
+
+		<form action="./add" method="post">
+		<div>
+			<label for="formName" class="form-label">ìƒí’ˆëª…</label>
+			<input type="text" name="bookName" class="form-control" id="formName"><br>
+		</div>
+		<div class="mb-3">
+			<label for="formContents" class="form-label">ìƒì„¸ì„¤ëª…</label>
+			<textarea rows="" cols="" name="bookContents"class="form-control" id="formContents"></textarea>
+		</div>
+			<label for="formRate" class="form-label">ì´ììœ¨</label>
+			<input type="text" name="bookRate" id="formRate" class="form-control"><br>
+		<div>
+			 <input type="radio" value="1" checked name="bookSale" class="form-check-input">íŒë§¤ê°€ëŠ¥<br>
+			
+			 <input type="radio" value="0" name="bookSale" class="form-check-input">íŒë§¤ì¤‘ì§€<br>
+		</div>
+		<div>	
+			ì¶•êµ¬ <input type="checkbox" value="FootBall" checked name="sports" class="form-check-input"><br>
+			ë†êµ¬ <input type="checkbox" value="BasketBall" name="sports" class="form-check-input"><br>
+			ì•¼êµ¬ <input type="checkbox" value="BaseBall" checked name="sports" class="form-check-input"><br>
+			ë°°êµ¬ <input type="checkbox" value="VallyBall" name="sports" class="form-check-input"><br>
+		</div>
+			<!-- <select name="bookSale">     2ë²ˆì§¸ë°©ë²•
+				<option value="1" selected>íŒë§¤ê°€ëŠ¥</option>     
+				<option value="0">íŒë§¤ì¤‘ì§€</option>
 			</select> -->
-		</p>
 
-		<button>µî·Ï</button>
-		<input type="submit" value="ADD"> <input type="reset"
-			value="ADD"> <input type="button" value="ADD">
-	</form>
-	
-		<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+			<button class="btn btn-success">ë“±ë¡</button>
+			<!-- ë²„íŠ¼ íƒ€ì…ì„ ìƒëµí•˜ë©´ ì„œë¸Œë°‹íƒ€ì… -->
+			<input type="reset" class="btn btn-danger">
+
+		</form>
+	</section>
+
 </body>
 </html>
