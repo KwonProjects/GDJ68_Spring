@@ -1,17 +1,6 @@
 package com.iu.main.di;
 
-public class Arm {
-	
-	private String direct;
+public interface Arm {
 
-	
-	public String getDirect() {
-		return direct;
-	}
-
-	public void setDirect(String direct) {
-		this.direct = direct;
-	}
-	
-
+	void punch();
 }
