@@ -35,7 +35,7 @@
 
 		</table>
 
-		<a class="btn btn-success" href="./add.do">상품등록</a>
+		<a class="btn btn-success" href="./add">상품등록</a>
 	</section>
 	<%-- <c:forEach begin="1" end="10" step="2" var="num"> <!--begin = 시작값 end = 끝값 step= 증가단위 var= 변수  -->
 		<h1>${num}</h1>

@@ -38,6 +38,15 @@ public class BankBookController {
 		
 		return "bankbook/add";
 	}
+	
+	
+	@RequestMapping(value = "add",method = RequestMethod.POST)
+	public String setAdd2() throws Exception {
+		
+		
+		return "redirect:./list";
+	}
+	
 	@RequestMapping(value = "update",method = RequestMethod.GET)
 	public String getUpdate()throws Exception{
 		System.out.println("update");

@@ -2,24 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
-
-	<!-- Root Context: defines shared resources visible to all other web components -->
-
-	<bean class="com.iu.car.Engine" id="engine">
-		<property name="fuel" value="GAS" />
-		<property name="hp" value="77" />
-		<property name="gitong" value="8" />
-	</bean>
 	
-	<bean class="com.iu.car.Car" id="car">
-		<!-- <constructor-arg name="name" value="BMW"></constructor-arg>
-		<constructor-arg name="engine" ref="engine"></constructor-arg> -->
+	<!-- Root Context: defines shared resources visible to all other web components -->
 		
-		<!-- <constructor-arg type="java.lang.String" value="BMW"></constructor-arg>
-		<constructor-arg type="com.iu.car.Engine" ref="engine"></constructor-arg> -->
-		
-		<constructor-arg index="0" value="BMW"></constructor-arg>
-		<constructor-arg index="1" ref="engine"></constructor-arg>
-	</bean>
-
 </beans>

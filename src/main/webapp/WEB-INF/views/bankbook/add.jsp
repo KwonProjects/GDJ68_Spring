@@ -25,7 +25,7 @@
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 						<li class="nav-item"><a class="nav-link active"
-							aria-current="page" href="/index.do">Home</a></li>
+							aria-current="page" href="/index">Home</a></li>
 						<li class="nav-item"><a class="nav-link active"
 							href="/bankbook/list.do">금융상품</a></li>
 						<li class="nav-item dropdown"><a
@@ -50,7 +50,7 @@
 		</nav>
 	</header>
 	<h1>Add Page</h1>
-	<form action="./add.do" method="post">
+	<form action="./add" method="post">
 	<div></div>
 		상품명<input type="text" name="bookName"><br> 상세설명
 		<textarea rows="" cols="" name="bookContents"></textarea>
