@@ -1,7 +1,10 @@
 package com.iu.main.bankbook;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -9,51 +12,45 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping("/bankbook/*")
 public class BankBookController {
-	
+
 	@Autowired
 	private BankBookService bankBookService;
-	
+
 	@RequestMapping(value = "list", method = RequestMethod.GET)
-	public String getList() throws Exception {
-
-		
-		System.out.println("list");
-		
+	public String getList(Model model) throws Exception {
+		List<BankBookDTO> ar = bankBookService.getList();
+		model.addAttribute("list", ar);
 		return "bankbook/list";
+	}
 
-	}
-	
-	@RequestMapping(value = "detail",method = RequestMethod.GET)
-	public String getDetail(BankBookDTO bankBookDTO)throws Exception{
+	@RequestMapping(value = "detail", method = RequestMethod.GET)
+	public ModelAndView getDetail(BankBookDTO bankBookDTO, ModelAndView mv)throws Exception{
+		
 		bankBookDTO = bankBookService.getDetail(bankBookDTO);
-		System.out.println("detail");
-		
-		
-		
-		return "bankbook/detail";
+		mv.addObject("dto", bankBookDTO);
+		mv.setViewName("bankbook/detail");
+		return mv;
 	}
-	
-	@RequestMapping(value = "add",method = RequestMethod.GET)
-	public String getAdd()throws Exception{
+
+	@RequestMapping(value = "add", method = RequestMethod.GET)
+	public String getAdd() throws Exception {
 		System.out.println("add");
-		
-		
+
 		return "bankbook/add";
 	}
-	@RequestMapping(value = "update",method = RequestMethod.GET)
-	public String getUpdate()throws Exception{
+
+	@RequestMapping(value = "update", method = RequestMethod.GET)
+	public String getUpdate() throws Exception {
 		System.out.println("update");
-		
-		
+
 		return "bankbook/update";
 	}
-	
-	//delete
-	@RequestMapping(value = "delete",method = RequestMethod.GET)
-	public String getDelete()throws Exception{
+
+	// delete
+	@RequestMapping(value = "delete", method = RequestMethod.GET)
+	public String getDelete() throws Exception {
 		System.out.println("delete");
-		
-		
+
 		return "bankbook/delete";
 	}
 
