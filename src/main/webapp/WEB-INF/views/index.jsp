@@ -1,26 +1,25 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>Insert title here</title>
-<!-- Latest compiled and minified CSS -->
-<c:import url="./temp/bootStrap.jsp"></c:import>
+	<meta charset="UTF-8">
+ 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Insert title here</title>
+
+	<c:import url="./temp/bootStrap.jsp"></c:import>
+
 
 </head>
 <body>
-	
-	<!-- Latest compiled JavaScript -->
 	<c:import url="./temp/header.jsp"></c:import>
 	<c:if test="${not empty sessionScope.member}">
-		<h1>·Î±×ÀÎ »óÅÂ</h1><br>	
-	</c:if>
-	<c:if test="${empty member}">
-	<h1>ºñ·Î±×ÀÎ »óÅÂ</h1>	
+		<h1>ë¡œê·¸ì¸ ìƒíƒœ</h1>
 	</c:if>
 	
-
+	<c:if test="${empty member}">
+		<h1>ë¹„ë¡œê·¸ì¸ ìƒíƒœ</h1>
+	</c:if>
 </body>
 </html>
