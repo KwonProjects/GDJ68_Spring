@@ -11,11 +11,11 @@ import com.iu.main.util.Pager;
 
 @Service
 public class BankBookService {
-	
+
 	@Autowired
 	private BankBookDAO bankBookDAO;
-	
-	public List<BankBookDTO> getList(Pager pager)throws Exception{
+
+	public List<BankBookDTO> getList(Pager pager) throws Exception {
 //		Map<String, Integer> map = new HashMap<String, Integer>();
 //		//page		startRow	lastRow
 //		//1			1			10
@@ -25,28 +25,30 @@ public class BankBookService {
 //		int count=10;
 //		int startRow= (page-1)*count+1; 
 //		int lastRow=page*count;		
-		
+
 		pager.makeRowNum();
-		
+		Long total = bankBookDAO.getTotal();
+		pager.makePageNum(total);
+
 //		map.put("startRow", startRow);
 //		map.put("lastRow", lastRow);
 		return bankBookDAO.getList(pager);
 	}
 
-	public BankBookDTO getDetail(BankBookDTO bankBookDTO)throws Exception{
+	public BankBookDTO getDetail(BankBookDTO bankBookDTO) throws Exception {
 		return bankBookDAO.getDetail(bankBookDTO);
 	}
-	
-	public int setAdd(BankBookDTO bankBookDTO)throws Exception{
+
+	public int setAdd(BankBookDTO bankBookDTO) throws Exception {
 		return bankBookDAO.setAdd(bankBookDTO);
 	}
-	
-	public int setUpdate(BankBookDTO bankBookDTO)throws Exception{
+
+	public int setUpdate(BankBookDTO bankBookDTO) throws Exception {
 		return bankBookDAO.setUpdate(bankBookDTO);
-	} 
-	
-	public int setDelete(Long num)throws Exception{
+	}
+
+	public int setDelete(Long num) throws Exception {
 		return bankBookDAO.setDelete(num);
 	}
-	
+
 }

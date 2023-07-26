@@ -20,6 +20,11 @@ public class BankBookDAO {
 	
 	private final String NAMESPACE="com.iu.main.bankbook.BankBookDAO.";
 	
+	//total
+	public Long getTotal()throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getTotal"); 
+	}
+	
 	//List
 	public List<BankBookDTO> getList(Pager pager)throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getList",pager);
@@ -45,5 +50,6 @@ public class BankBookDAO {
 	public int setDelete(Long num)throws Exception{
 		return sqlSession.delete(NAMESPACE+"setDelete", num);
 	}
+
 
 }
