@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.iu.main.util.Pager;
+
 @Controller
 @RequestMapping("/notice/**")
 public class NoticeController {
@@ -17,9 +19,10 @@ public class NoticeController {
 	private NoticeService noticeService;
 
 	@RequestMapping(value = "list", method = RequestMethod.GET)
-	public ModelAndView goNotice(ModelAndView mv) throws Exception {
-		List<NoticeDTO> ar = noticeService.getList();
+	public ModelAndView goNotice(Pager pager,ModelAndView mv) throws Exception {
+		List<NoticeDTO> ar = noticeService.getList(pager);
 		mv.addObject("list", ar);
+		mv.addObject("pager", pager);
 		mv.setViewName("board/list");
 		return mv;
 	}
@@ -36,13 +39,15 @@ public class NoticeController {
 		return "redirect:./list";
 	}
 
-	@RequestMapping(value = "detail")
-	public ModelAndView getDetail(NoticeDTO noticeDTO, ModelAndView mv) throws Exception {
-		noticeDTO = noticeService.getDetail(noticeDTO);
-		mv.addObject("detail", noticeDTO);
+	@RequestMapping(value="detail", method=RequestMethod.GET)
+	public ModelAndView getDetail(NoticeDTO noticeDTO, ModelAndView mv) throws Exception{
+		noticeDTO = noticeService.getDetail(noticeDTO);				
+		mv.addObject("dto", noticeDTO);
 		mv.setViewName("board/detail");
+		
 		return mv;
 	}
+	
 
 	@RequestMapping(value = "update", method = RequestMethod.GET)
 	public ModelAndView setUpdate(NoticeDTO noticeDTO, ModelAndView mv) throws Exception {

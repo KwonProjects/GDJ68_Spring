@@ -6,6 +6,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.iu.main.bankbook.BankBookDTO;
+import com.iu.main.util.Pager;
+
 @Repository
 public class NoticeDAO {
 	
@@ -15,9 +18,13 @@ public class NoticeDAO {
 	private final String NAMESPACE="com.iu.main.notice.NoticeDAO.";
 
 	
-	public List<NoticeDTO>  getList() throws Exception{
-		
-		return sqlSession.selectList(NAMESPACE+"getList");
+	public Long getTotal()throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getTotal"); 
+	}
+	
+	
+	public List<NoticeDTO> getList(Pager pager)throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getList",pager);
 	}
 	
 	public int setAdd(NoticeDTO noticeDTO)throws Exception{
@@ -37,4 +44,6 @@ public class NoticeDAO {
 	public int setDelete(NoticeDTO noticeDTO) {
 		return sqlSession.delete(NAMESPACE+"setDelete",noticeDTO);
 	}
+
+
 }

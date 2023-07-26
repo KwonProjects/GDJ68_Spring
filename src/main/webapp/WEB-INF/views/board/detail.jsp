@@ -1,43 +1,55 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
-<style type="text/css"></style>
-<c:import url="../temp/bootStrap.jsp"></c:import>
-
 </head>
+<c:import url="../temp/bootStrap.jsp"></c:import>
 <body>
-	<c:import url="../temp/header.jsp"></c:import>
-	<h1>Detail Page</h1>
+<c:import url="../temp/header.jsp"></c:import>
+	<section class="container mt-5">
+		<h1 class="mb-5 text-center">Detail Page</h1> 	
+	
+	<%-- ${} --%>
+	<!-- Getter ì´ë¦„ : ë©”ì„œë“œì—ì„œ getì„ ì œì™¸í•˜ê³  ì²«ë²ˆì§¸ê¸€ìë¥¼ ì†Œë¬¸ìë¡œ ë°”ê¾¼ê²ƒ -->
+	
+	<%-- <h1>ì´ë¦„ : ${dto.name}</h1>
+	<h1>êµ­ì–´ì ìˆ˜ : ${dto.korean}</h1>
+	<h1>ì˜ì–´ì ìˆ˜ : ${dto.eng}</h1>
+	<h1>ìˆ˜í•™ì ìˆ˜ : ${dto.math}</h1>	
 
+	<h1>ì´ì  : ${dto.math+dto.korean+dto.eng}</h1>
+	<h1>í‰ê·  : ${(dto.math+dto.korean+dto.eng)/3}</h1> --%>
 
-	<!-- Getter ÀÌ¸§ : ¸Ş¼­µå¿¡¼­ getÀ» Á¦¿ÜÇÏ°í Ã¹¹øÂ°±ÛÀÚ¸¦ ¼Ò¹®ÀÚ·Î ¹Ù²Û°Í-->
-	<div class="text-center me-4">
-		<table class="table table-hover mt-2">
+	<table class="mb-3 table ">
 			<thead>
-				<th>Á¦¸ñ</th>
-				<th>ÀÛ¼ºÀÚ</th>
-				<th>Á¦¸ñ</th>
-				<th>Á¶È¸¼ö</th>
+				<th class>NO</th><th>SUBJECT</th><th>NAME</th><th>DATE</th><th>HIT</th>
 			</thead>
-			<tbody>
-			<tr>
-				<td>${detail.subject }</td>
-				<td>${detail.name }</td>
-				<td>${detail.createdate }</td>
-				<td>${detail.hit }</td>
-				</tr>
-				<tr><td colspan="4">${detail.contents}</td></tr>
+			<tbody>				
+					<tr>
+						<td>${dto.no} </td>										
+						<td>${dto.subject}</td>				
+						<td>${dto.name}</td>
+						<td>${dto.createdate}</td>
+						<td>${dto.hit}</td>		
+					</tr>
+					<tr>
+						<th colspan='5'>CONTENTS</th>
+					</tr>
+					<tr>					
+						<td colspan='5'>${dto.contents}</td>
+					</tr>				
 			</tbody>
-
 		</table>
+	<div align="center">
+		<a class="btn btn-outline-warning" href="./update?no=${dto.no}">ìˆ˜ì •</a>
+		<a class="btn btn-outline-danger" href="./delete?no=${dto.no}">ì‚­ì œ</a>	
 	</div>
-	<a href="./update?no=${detail.no}" class="btn btn-warning">¼öÁ¤ÇÏ±â</a>
-	<a href="./delete?no=${detail.no}" class="btn btn-warning">»èÁ¦ÇÏ±â</a>
+</section>
+
 
 </body>
 </html>
