@@ -4,17 +4,21 @@ import java.sql.Date;
 
 public class MemberDTO {
 	//접근지정자는 private
-	//변수명 타입 Table의 컬럼과 동일하게
-	//setter , getter
+	//변수명 타입은 Table의 컬럼과 동일하게
+	//setter, getter
 	//생성자는 여러개 선언 가능하지만 기본 생성자는 필수
-	
 	private String id;
 	private String pw;
 	private String name;
 	private String email;
 	private Date birth;
+	
+	
 	public String getId() {
 		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
 	}
 	public String getPw() {
 		return pw;
@@ -40,8 +44,10 @@ public class MemberDTO {
 	public void setBirth(Date birth) {
 		this.birth = birth;
 	}
-	public void setId(String id) {
-		this.id = id;
-	}
 	
+	
+	
+	
+	
+
 }

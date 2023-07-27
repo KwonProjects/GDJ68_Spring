@@ -1,37 +1,44 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
-<c:import url="../temp/bootStrap.jsp"></c:import>
-
+	<c:import url="../temp/bootStrap.jsp"></c:import>
 </head>
 <body>
 	<c:import url="../temp/header.jsp"></c:import>
-	<h1>Update Page</h1>
-
-	<form action="./update" method="post">
-		<input type="hidden" name="bookNum" value="${dto.bookNum}" readonly="readonly">
-		»óÇ°¸í : <input type="text" name="bookName" value="${dto.bookName}"><br>
-		»ó¼¼¼³¸í : <textarea rows="" cols="" name="bookContents">${dto.bookContents}</textarea><br>
-		ÀÌÀÚÀ² : <input type="text" name="bookRate"	value="${dto.bookRate}"><br>
-
-		<p>
-			ÆÇ¸Å°¡´É <input type="radio" name="bookSale" value="1" checked="checked"><br>
-			ÆÇ¸ÅÁßÁö <input type="radio" name="bookSale" value="0"><br>
-		</p>
-		<p>
-			<!-- 			<select name="boo">
-				<option>ÆÇ¸Å°¡´É</option>
-				<option selected>ÆÇ¸ÅÁßÁö</option>
-			</select> -->
-		</p>
-
-		<button>¼öÁ¤</button>
-		<input type="submit" value="ADD"> <input type="reset"
-			value="ADD"> <input type="button" value="ADD">
-	</form>
+	
+	<h1>update page</h1>
+	<section class="mt-3 text-center">
+		<h1>Update Page</h1>
+		
+		<form action="./update.do" method="post">
+			ìƒí’ˆë²ˆí˜¸<input type="hidden" class="form-control" id="formGroupExampleInput" name="bookNum" value="${dto.bookNum}">
+			ìƒí’ˆëª…<input type="text" class="form-control" id="formGroupExampleInput" name="bookName" value="${dto.bookName}"><br>
+			ì´ììœ¨<input type="text" class="form-control" id="formGroupExampleInput" name="bookRate" value="${dto.bookRate}"><br>
+			ìƒì„¸ì„¤ëª…<textarea class="form-control" rows="5" id="comment" name="bookContents">${dto.bookContents}</textarea><br>
+			
+			<p>
+				íŒë§¤ê°€ëŠ¥<input type="radio" class="form-check-input" value="1" checked name="bookSale"><br>
+				íŒë§¤ì¤‘ì§€<input type="radio" class="form-check-input" value="0" name="bookSale"><br>
+			</p>
+			
+			<!-- <p>
+				<select name="bookSale">
+					<option value="1">íŒë§¤ê°€ëŠ¥</option>
+					<option value="0" selected>íŒë§¤ì¤‘ì§€</option>
+				</select>	
+			</p> -->
+			
+			<button type="submit" class="btn btn-primary">ìˆ˜ì •</button>
+			<input type="submit" class="btn btn-primary" value="ìˆ˜ì •">
+			<input type="reset" class="btn btn-primary" value="ìˆ˜ì •">
+			<input type="button" class="btn btn-primary" value="ìˆ˜ì •">
+			
+		</form>
+	</section>
+	
 </body>
 </html>

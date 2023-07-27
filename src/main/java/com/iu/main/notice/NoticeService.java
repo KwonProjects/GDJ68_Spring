@@ -17,22 +17,13 @@ public class NoticeService {
 	private NoticeDAO noticeDAO;
 	
 	public List<NoticeDTO> getList(Pager pager) throws Exception {
-//		Map<String, Integer> map = new HashMap<String, Integer>();
-//		//page		startRow	lastRow
-//		//1			1			10
-//		//2			11			20
-//		//3			21			30
-//		//....
-//		int count=10;
-//		int startRow= (page-1)*count+1; 
-//		int lastRow=page*count;		
+
 
 		pager.makeRowNum();
-		Long total = noticeDAO.getTotal();
+		Long total = noticeDAO.getTotal(pager);
 		pager.makePageNum(total);
 
-//		map.put("startRow", startRow);
-//		map.put("lastRow", lastRow);
+		
 		return noticeDAO.getList(pager);
 	}
 

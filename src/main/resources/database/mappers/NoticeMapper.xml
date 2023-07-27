@@ -3,29 +3,42 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.iu.main.notice.NoticeDAO">
+	<sql id="searchSql">
+		WHERE BOOKNUM>0
+		AND
+		<choose>
+			<when test="kind=='subject'">
+				SUBJECT LIKE '%'||#{search}||'%'
+			</when>
+			<when test="kind=='name'">
+				NAME LIKE '%'||#{search}||'%'
+			</when>
+			<otherwise>
+				CONTENTS LIKE '%'||#{search}||'%'
+			</otherwise>
+		</choose>
+	</sql>
 	<select id="getTotal" resultType="Long">
 		SELECT COUNT(*) FROM NOTICE
 	</select>
 	<select id="getList" parameterType="com.iu.main.util.Pager"
 		resultType="NoticeDTO">
-		SELECT 
+		SELECT
 		NO,SUBJECT,NAME,CREATEDATE,HIT FROM
 		(SELECT ROWNUM R , N.* FROM
 		(
 		SELECT * FROM NOTICE
 		WHERE NO>0
-		ORDER BY NO DESC
+		ORDER
+		BY NO DESC
 		) N
 		)
 		WHERE R BETWEEN #{startRow} AND #{lastRow}
 	</select>
 
 
-<!-- 	<select id="getList" resultType="NoticeDTO">
-		SELECT
-		NO,SUBJECT,NAME,CREATEDATE,HIT
-		FROM NOTICE ORDER BY NO DESC
-	</select> -->
+	<!-- <select id="getList" resultType="NoticeDTO"> SELECT NO,SUBJECT,NAME,CREATEDATE,HIT 
+		FROM NOTICE ORDER BY NO DESC </select> -->
 	<insert id="setAdd" parameterType="NoticeDTO">
 		INSERT INTO NOTICE (NO,
 		SUBJECT, CONTENTS,NAME,CREATEDATE,HIT)
