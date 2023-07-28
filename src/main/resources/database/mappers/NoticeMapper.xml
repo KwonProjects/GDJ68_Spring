@@ -4,7 +4,7 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.iu.main.notice.NoticeDAO">
 	<sql id="searchSql">
-		WHERE BOOKNUM>0
+		WHERE NOTICENUM>0
 		AND
 		<choose>
 			<when test="kind=='subject'">
@@ -24,13 +24,13 @@
 	<select id="getList" parameterType="com.iu.main.util.Pager"
 		resultType="NoticeDTO">
 		SELECT
-		NO,SUBJECT,NAME,CREATEDATE,HIT FROM
+		NOTICENUM,SUBJECT,NAME,CREATEDATE,HIT FROM
 		(SELECT ROWNUM R , N.* FROM
 		(
 		SELECT * FROM NOTICE
-		WHERE NO>0
+		WHERE NOTICENUM>0
 		ORDER
-		BY NO DESC
+		BY NOTICENUM DESC
 		) N
 		)
 		WHERE R BETWEEN #{startRow} AND #{lastRow}
@@ -40,22 +40,22 @@
 	<!-- <select id="getList" resultType="NoticeDTO"> SELECT NO,SUBJECT,NAME,CREATEDATE,HIT 
 		FROM NOTICE ORDER BY NO DESC </select> -->
 	<insert id="setAdd" parameterType="NoticeDTO">
-		INSERT INTO NOTICE (NO,
+		INSERT INTO NOTICE (NOTICENUM,
 		SUBJECT, CONTENTS,NAME,CREATEDATE,HIT)
 		VALUES (NOTICE_SEQ.NEXTVAL,
 		#{subject},#{contents},#{name},SYSDATE,0)
 	</insert>
 	<select id="getDetail" resultType="NoticeDTO"
 		parameterType="NoticeDTO">
-		SELECT NO,SUBJECT, CONTENTS,NAME,CREATEDATE,HIT FROM
-		NOTICE WHERE NO=#{no}
+		SELECT NOTICENUM,SUBJECT, CONTENTS,NAME,CREATEDATE,HIT FROM
+		NOTICE WHERE NOTICENUM=#{noticeNum}
 	</select>
 	<update id="setUpdate" parameterType="NoticeDTO">
 		UPDATE NOTICE SET
-		CONTENTS=#{contents} WHERE NO=#{no}
+		CONTENTS=#{contents} WHERE NOTICENUM=#{noticeNum}
 	</update>
 	<delete id="setDelete" parameterType="Long">
 		DELETE NOTICE WHERE
-		NO=#{no}
+		NOTICENUM=#{noticeNum}
 	</delete>
 </mapper>

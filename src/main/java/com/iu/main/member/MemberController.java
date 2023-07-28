@@ -11,71 +11,71 @@ import org.springframework.web.multipart.MultipartFile;
 @Controller
 @RequestMapping("/member/*")
 public class MemberController {
-	
+
 	@Autowired
 	private MemberService memberService;
-	
-	@RequestMapping(value="join", method = RequestMethod.GET)
-	public void setJoin()throws Exception{
-		
+
+	@RequestMapping(value = "join", method = RequestMethod.GET)
+	public void setJoin() throws Exception {
+
 	}
+
 	@RequestMapping(value = "join", method = RequestMethod.POST)
-	public String setJoin(MemberDTO memberDTO, MultipartFile pic,HttpSession session)throws Exception{
-		int result = memberService.setJoin(memberDTO, pic,session);
+	public String setJoin(MemberDTO memberDTO, MultipartFile pic, HttpSession session) throws Exception {
+		int result = memberService.setJoin(memberDTO, pic, session);
 		System.out.println(pic.getName());
 		System.out.println(pic.getOriginalFilename());
 		System.out.println(pic.getSize());
-		
+
 		return "redirect:../";
 	}
-	
+
 	@RequestMapping(value = "login", method = RequestMethod.GET)
-	public void getLogin()throws Exception{
-		
+	public void getLogin() throws Exception {
+
 	}
+
 	@RequestMapping(value = "login", method = RequestMethod.POST)
-	public String getLogin(MemberDTO memberDTO, HttpSession session)throws Exception{
+	public String getLogin(MemberDTO memberDTO, HttpSession session) throws Exception {
 		memberDTO = memberService.getLogin(memberDTO);
-		
-		if(memberDTO != null) {
+
+		if (memberDTO != null) {
 			session.setAttribute("member", memberDTO);
 		}
-		
+
 		return "redirect:../";
-		
+
 	}
-	
-	//logout
+
+	// logout
 	@RequestMapping(value = "logout", method = RequestMethod.GET)
-	public String getLogout(HttpSession session)throws Exception{
+	public String getLogout(HttpSession session) throws Exception {
 		session.invalidate();
-		
+
 		return "redirect:../";
 	}
-	
-	//mypage
+
+	// mypage
 	@RequestMapping(value = "mypage", method = RequestMethod.GET)
-	public void getMyPage()throws Exception{
-		
+	public void getMyPage() throws Exception {
+
 	}
-	
-	//update
+
+	// update
 	@RequestMapping(value = "memberUpdate", method = RequestMethod.GET)
-	public void setMemberUpdate()throws Exception{
-		
+	public void setMemberUpdate() throws Exception {
+
 	}
-	
+
 	@RequestMapping(value = "memberUpdate", method = RequestMethod.POST)
-	public String setMemberUpdate(MemberDTO memberDTO, HttpSession session)throws Exception{
-		MemberDTO sessionMember = (MemberDTO)session.getAttribute("member");
+	public String setMemberUpdate(MemberDTO memberDTO, HttpSession session) throws Exception {
+		MemberDTO sessionMember = (MemberDTO) session.getAttribute("member");
 		memberDTO.setId(sessionMember.getId());
 		int result = memberService.setMemberUpdate(memberDTO);
-		if(result>0) {
+		if (result > 0) {
 			session.setAttribute("member", memberDTO);
 		}
-		 
+
 		return "redirect:./mypage";
 	}
-	
-
 }

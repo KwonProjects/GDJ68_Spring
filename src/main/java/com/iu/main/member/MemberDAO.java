@@ -9,7 +9,12 @@ public class MemberDAO {
 	
 	@Autowired
 	private SqlSession sqlSession;
+	
 	private final String NAMESPACE="com.iu.main.member.MemberDAO.";
+	
+	public int setFileJoin(MemberFileDTO memberFileDTO) throws Exception{
+		return sqlSession.insert(NAMESPACE+"setFileJoin", memberFileDTO);
+	}
 	
 	public int setJoin(MemberDTO memberDTO)throws Exception{
 		return sqlSession.insert(NAMESPACE+"setJoin", memberDTO);

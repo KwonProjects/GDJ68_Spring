@@ -26,6 +26,10 @@
 			<h1>판매종료</h1>
 		</c:otherwise>
 	</c:choose>
+	
+	<c:forEach items="${dto.fileDTOs}" var="f">
+		<img alt="" src="/resources/upload/bankbook/${f.fileName}">
+	</c:forEach>
 
 	<a href="./update?bookNum=${dto.bookNum}" class="btn btn-warning">수정</a>
 	<a href="./delete?bookNum=${dto.bookNum}" class="btn btn-warning">삭제</a>

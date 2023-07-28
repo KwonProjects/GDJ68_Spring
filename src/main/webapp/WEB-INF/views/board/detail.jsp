@@ -30,7 +30,7 @@
 			</thead>
 			<tbody>				
 					<tr>
-						<td>${dto.no} </td>										
+						<td>${dto.noticeNum} </td>										
 						<td>${dto.subject}</td>				
 						<td>${dto.name}</td>
 						<td>${dto.createdate}</td>
@@ -45,8 +45,8 @@
 			</tbody>
 		</table>
 	<div align="center">
-		<a class="btn btn-outline-warning" href="./update?no=${dto.no}">수정</a>
-		<a class="btn btn-outline-danger" href="./delete?no=${dto.no}">삭제</a>	
+		<a class="btn btn-outline-warning" href="./update?no=${dto.noticeNum}">수정</a>
+		<a class="btn btn-outline-danger" href="./delete?no=${dto.noticeNum}">삭제</a>	
 	</div>
 </section>
 

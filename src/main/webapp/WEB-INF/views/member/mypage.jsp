@@ -14,9 +14,12 @@
 
 	<section class="container mt-5">
 		<div>
-			<p>아이디 : ${member.id }</p>
-			<p>비밀번호 : ${member.email}</p>
-			<p>생일 : ${member.birth}</p>
+		<p>
+			<img alt="" src="../resources/upload/member/${member.memberFileDTO.fileName}">
+		</p>
+			<p>${member.id } : ${sessionScope.member.name}</p>
+			<p>${member.email}</p>
+			<p>${member.birth}</p>
 		</div>
 
 		<a class="btn btn-primary" href="./memberUpdate">회원수정</a>

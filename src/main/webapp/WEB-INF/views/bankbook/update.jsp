@@ -14,7 +14,7 @@
 	<section class="mt-3 text-center">
 		<h1>Update Page</h1>
 		
-		<form action="./update.do" method="post">
+		<form action="./update" method="post">
 			상품번호<input type="hidden" class="form-control" id="formGroupExampleInput" name="bookNum" value="${dto.bookNum}">
 			상품명<input type="text" class="form-control" id="formGroupExampleInput" name="bookName" value="${dto.bookName}"><br>
 			이자율<input type="text" class="form-control" id="formGroupExampleInput" name="bookRate" value="${dto.bookRate}"><br>

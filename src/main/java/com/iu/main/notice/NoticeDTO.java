@@ -4,22 +4,23 @@ import java.sql.Date;
 
 public class NoticeDTO {
 	
-	private Long no;
+	private Long noticeNum;
 	private String subject;
 	private String contents;
 	private String name;
 	private Date createdate;
 	private Integer hit;
 	
-	
 
-	
-	public Long getNo() {
-		return no;
+
+
+
+	public Long getNoticeNum() {
+		return noticeNum;
 	}
 
-	public void setNo(Long no) {
-		this.no = no;
+	public void setNoticeNum(Long noticeNum) {
+		this.noticeNum = noticeNum;
 	}
 
 	public String getSubject() {

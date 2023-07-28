@@ -18,12 +18,12 @@ public class BankBookDAO {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	private final String NAMESPACE="com.iu.main.bankbook.BankBookDAO.";
+	private final String NAMESPACE="com.iu.main.bankBook.BankBookDAO.";
 	
 	//total
 	public Long getTotal(Pager pager)throws Exception{
-		return sqlSession.selectOne(NAMESPACE+"getTotal",pager); 
-	}
+		return sqlSession.selectOne(NAMESPACE+"getTotal", pager);
+	} 
 	
 	//List
 	public List<BankBookDTO> getList(Pager pager)throws Exception{
@@ -36,9 +36,17 @@ public class BankBookDAO {
 		return sqlSession.selectOne(NAMESPACE+"getDetail", bankBookDTO);
 	}
 	
+	public long getSequence()throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getSequence");
+	}
+	
 	//add
 	public int setAdd(BankBookDTO bankBookDTO)throws Exception{
 		return sqlSession.insert(NAMESPACE+"setAdd", bankBookDTO);
+	}
+	
+	public int setFileAdd(BankBookFileDTO bankBookFileDTO)throws Exception{
+		return sqlSession.insert(NAMESPACE+"setFileAdd", bankBookFileDTO);
 	}
 	
 	//update
@@ -50,6 +58,5 @@ public class BankBookDAO {
 	public int setDelete(Long num)throws Exception{
 		return sqlSession.delete(NAMESPACE+"setDelete", num);
 	}
-
 
 }

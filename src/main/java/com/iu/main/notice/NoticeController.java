@@ -61,7 +61,7 @@ public class NoticeController {
 	public String setUpdate(NoticeDTO noticeDTO) throws Exception {
 
 		int result = noticeService.setUpdate(noticeDTO);
-		return "redirect:./detail?no=" + noticeDTO.getNo();
+		return "redirect:./detail?no=" + noticeDTO.getNoticeNum();
 	}
 	
 	@RequestMapping(value = "delete", method = RequestMethod.GET)
