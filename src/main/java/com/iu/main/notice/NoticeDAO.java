@@ -11,39 +11,40 @@ import com.iu.main.util.Pager;
 
 @Repository
 public class NoticeDAO {
-	
+
 	@Autowired
 	private SqlSession sqlSession;
-	
-	private final String NAMESPACE="com.iu.main.notice.NoticeDAO.";
 
-	
-	public Long getTotal(Pager pager)throws Exception{
-		return sqlSession.selectOne(NAMESPACE+"getTotal",pager); 
+	private final String NAMESPACE = "com.iu.main.notice.NoticeDAO.";
+
+	public Long getTotal(Pager pager) throws Exception {
+		return sqlSession.selectOne(NAMESPACE + "getTotal", pager);
 	}
-	
-	
-	public List<NoticeDTO> getList(Pager pager)throws Exception{
-		return sqlSession.selectList(NAMESPACE+"getList",pager);
+
+	public List<NoticeDTO> getList(Pager pager) throws Exception {
+		return sqlSession.selectList(NAMESPACE + "getList", pager);
 	}
-	
-	public int setAdd(NoticeDTO noticeDTO)throws Exception{
-		
-		return sqlSession.insert(NAMESPACE+"setAdd", noticeDTO);
+
+	public int setAdd(NoticeDTO noticeDTO) throws Exception {
+
+		return sqlSession.insert(NAMESPACE + "setAdd", noticeDTO);
+	}
+
+	public int setFileAdd(NoticeFileDTO noticeFileDTO) throws Exception {
+		return sqlSession.insert(NAMESPACE + "setFileAdd", noticeFileDTO);
 	}
 
 	public NoticeDTO getDetail(NoticeDTO noticeDTO) {
-		
-		return sqlSession.selectOne(NAMESPACE+"getDetail", noticeDTO);
+
+		return sqlSession.selectOne(NAMESPACE + "getDetail", noticeDTO);
 	}
 
 	public int setUpdate(NoticeDTO noticeDTO) {
-		return sqlSession.update(NAMESPACE+"setUpdate",noticeDTO);
+		return sqlSession.update(NAMESPACE + "setUpdate", noticeDTO);
 	}
 
 	public int setDelete(NoticeDTO noticeDTO) {
-		return sqlSession.delete(NAMESPACE+"setDelete",noticeDTO);
+		return sqlSession.delete(NAMESPACE + "setDelete", noticeDTO);
 	}
-
 
 }

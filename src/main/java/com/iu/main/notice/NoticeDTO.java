@@ -11,10 +11,6 @@ public class NoticeDTO {
 	private Date createdate;
 	private Integer hit;
 	
-
-
-
-
 	public Long getNoticeNum() {
 		return noticeNum;
 	}

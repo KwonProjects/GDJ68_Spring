@@ -28,7 +28,6 @@ public class MemberService {
 
 		int result = memberDAO.setJoin(memberDTO);
 		
-		
 		if (!multipartFile.isEmpty()) {
 			String fileName = fileManager.fileSave(path, session, multipartFile);
 			MemberFileDTO memberFileDTO = new MemberFileDTO();

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.iu.main.qna.QnaDAO">
+	<select id="getTotal" parameterType="com.iu.main.util.Pager"
+		resultType="Long">
+		SELECT COUNT(QNANUM) FROM QNA
+	</select>
+
+	<select id="getList" parameterType="com.iu.main.util.Pager"
+		resultType="QnaDTO">
+		SELECT
+		QNANUM,NAME,SUBJECT,CREATEDATE,HIT FROM
+		(SELECT ROWNUM
+		R , Q.* FROM
+		(
+		SELECT * FROM QNA
+		WHERE QNANUM>0
+		ORDER
+		BY QNANUM DESC
+		) Q
+		)
+		WHERE R BETWEEN #{startRow} AND #{lastRow}
+	</select>
+</mapper>
